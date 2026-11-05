@@ -1,0 +1,17 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    # 每 3 天的凌晨自动运行一次
+    - cron: '0 0 */3 * *'
+  workflow_dispatch: # 支持手动点击触发
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Request to Supabase
+        run: |
+          curl -X GET "https://ifqcztyknsanqwdvexgj.supabase.co/rest/v1/quests?select=id&limit=1" \
+          -H "apikey: sb_publishable_ToDsctu5I3AQYEwb06JKig_nP1Ztp_g" \
+          -H "Authorization: Bearer sb_publishable_ToDsctu5I3AQYEwb06JKig_nP1Ztp_g"
